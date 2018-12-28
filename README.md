@@ -1,4 +1,3 @@
-
 # Batch Scoring Deep Learning Models With Azure Machine Learning
 
 ## Overview
