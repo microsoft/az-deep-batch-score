@@ -4,15 +4,13 @@
 In this repository, we use the scenario of applying style transfer onto a video (collection of images). This architecture can be generalized for any batch scoring with deep learning scenario.
 
 ## Design
-![Reference Architecture Diagram](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/batchscoringdl-aks-architecture-diagram.PNG)
+![Reference Architecture Diagram](https://happypathspublic.blob.core.windows.net/assets/batch_scoring_for_dl/batchscoringdl-aml-architecture-diagram.jpg)
 
 The above architecture works as follows:
 1. Upload a video file to storage.
-2. The video file will trigger Logic App to send a request to the flask endpoint hosted on one of the nodes of the AKS cluster.
-3. That node will first preprocess the video file by splitting the video into individual images and extracting the audio file.
-4. That node will then add all images to the Service Bus queue.
-5. The other nodes in the AKS cluster are continuously polling the Service Bus queue - as soon as any images are in the queue, it will pull it off the queue and apply style transfer to the image.
-6. When all frames have been processed, the images will be stitched back together into a video with the audio file.
+2. The video file will trigger Logic App to send a request to the AML pipeline published endpoint.
+3. The pipeline will then process the video, apply style transfer with MPI, and postprocess the video.
+4. The output will be saved back to blob storage once the pipeline is completed.
 
 ### What is Neural Style Transfer 
 
@@ -31,7 +29,6 @@ Local/Working Machine:
 - [Azure CLI >=2.0](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
 
 Accounts:
-- [Dockerhub account](https://hub.docker.com/)
 - [Azure Subscription](https://azure.microsoft.com/en-us/free/) 
 - (Optional) A [quota](https://docs.microsoft.com/en-us/azure/azure-supportability/resource-manager-core-quotas-request) for GPU-enabled VMs
 
@@ -41,23 +38,17 @@ While it is not required, it is also useful to use the [Azure Storage Explorer](
 
 1. Clone the repo `git clone <repo-name>`
 2. `cd` into the repo
-3. Setup your conda env using the _environment.yml_ file `conda env create -f environment.yml` - this will create a conda environment called __batchscoringdl__
+3. Setup your conda env using the _environment.yaml_ file `conda env create -f environment.yaml` - this will create a conda environment called __batchscoringdl__
 4. Activate your environment `source activate batchscoringdl`
 5. Log in to Azure using the __az cli__ `az login`
-6. Log in to Docker using the docker cli `docker login`
-
-#### Run the Kubernetes Dashboard
-Run `az aks browse -n $aks_cluster -g $resource_group` in your terminal so that you can use the Kubernetes Dashboard. If you're not able to access the dashboard, follow the instructions [here](https://blog.tekspace.io/kubernetes-dashboard-remote-access/).
 
 ## Steps
 Run throught the following notebooks:
-1. [Test the Style Transfer Script](/00_test_neural_style_transfer.ipynb)
-2. [Setup Azure - Resource group, Storage, Service Bus](/01_setup_azure.ipynb).
-3. [Test the model locally](./02_local_testing.ipynb)
-4. [Create the AKS cluster](./03_create_aks_cluster.ipynb)
-5. [Run style transfer on the cluster](./04_style_transfer_on_aks.ipynb)
-6. [Deploy Logic Apps](./05_deploy_logic_app.ipynb)
-7. [Clean up](./06_clean_up.ipynb)
+1. [Test the scripts](/01_local_testing.ipynb)
+2. [Setup AML](/02_setup_aml.ipynb).
+3. [Develop & publish AML pipeline](./03_develop_pipeline.ipynb)
+4. [Deploy Logic Apps](./04_deploy_logic_apps.ipynb)
+5. [Clean up](./05_clean_up.ipynb)
 
 ## Clean up
 To clean up your working directory, you can run the `clean_up.sh` script that comes with this repo. This will remove all temporary directories that were generated as well as any configuration (such as Dockerfiles) that were created during the tutorials. This script will _not_ remove the `.env` file. 

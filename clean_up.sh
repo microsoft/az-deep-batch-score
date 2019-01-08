@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# remove tmp files
+rm -rf local_test_orangutan
+
 # rm tmp dirs
 rm -rf output_dir
 rm -rf content_dir
