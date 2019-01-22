@@ -5,7 +5,13 @@
         "location": {
             "type": "string"
         },
-        "subscription_id":  {"type": "string"}
+        "subscription_id":  {"type": "string"},
+        "storage_account_name": {
+            "type": "string"
+        },
+        "storage_account_key": {
+            "type": "string"
+        }
     },
     "resources": [
         {
@@ -16,7 +22,10 @@
             "scale": null,
             "properties": {
                 "displayName": "batchscoringdlsa",
-                "customParameterValues": {},
+                "parameterValues": {
+                    "accountName": "[parameters('storage_account_name')]",
+                    "accessKey": "[parameters('storage_account_key')]"
+                },
                 "api": {
                     "id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/azureblob')]"
                 }
