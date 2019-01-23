@@ -37,7 +37,7 @@ While it is not required, it is also useful to use the [Azure Storage Explorer](
 
 1. Clone the repo `git clone https://github.com/Azure/Batch-Scoring-Deep-Learning-Models-With-AML`
 2. `cd` into the repo
-3. Setup your conda env using the _environment.yaml_ file `conda env create -f environment.yml` - this will create a conda environment called __batchscoringdl__
+3. Setup your conda env using the _environment.yaml_ file `conda env create -f environment.yml` - this will create a conda environment called __batchscoringdl_aml__
 4. Activate your environment `source activate batchscoringdl_aml`
 5. Log in to Azure using the __az cli__ `az login`
 
