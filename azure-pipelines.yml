@@ -30,4 +30,36 @@ jobs:
       conda env list  
       echo Execute 01_local_testing.ipynb
       papermill 01_local_testing.ipynb 01_local_testing_output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: '01_local_testing.ipynb'
+    displayName: '01_local_testing.ipynb
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate batchscoringdl_aml
+      conda env list  
+      echo Execute 02_setup_aml.ipynb
+      papermill 02_setup_aml.ipynb 02_setup_aml_output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '02_setup_aml.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate batchscoringdl_aml
+      conda env list  
+      echo Execute 03_develop_pipeline.ipynb
+      papermill 03_develop_pipeline.ipynb 03_develop_pipeline_output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '03_develop_pipeline.ipynb
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate batchscoringdl_aml
+      conda env list  
+      echo Execute 04_deploy_logic_apps.ipynb
+      papermill 04_deploy_logic_apps.ipynb 04_deploy_logic_apps_output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '04_deploy_logic_apps.ipynb
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate batchscoringdl_aml
+      conda env list  
+      echo Execute 05_clean_up.ipynb
+      papermill 05_clean_up.ipynb 05_clean_up_output.ipynb --log-output --no-progress-bar -k python3 
+    displayName: '05_clean_up.ipynb
