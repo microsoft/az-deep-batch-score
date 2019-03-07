@@ -14,5 +14,3 @@ rm *.mp3
 
 # rm jnl files from azcopy
 rm -rf *.jnl
-
-
