@@ -34,7 +34,7 @@ jobs:
       cd notebooks
       echo Execute 01_local_testing.ipynb
       papermill 01_local_testing.ipynb 01_local_testing_output.ipynb --log-output --no-progress-bar -k python3 
-    displayName: '01_local_testing.ipynb
+    displayName: '01_local_testing.ipynb'
 
   - bash: |
       source /usr/share/miniconda/etc/profile.d/conda.sh
