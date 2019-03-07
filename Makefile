@@ -15,6 +15,7 @@ export PROJECT_HELP_MSG
 
 include .dev_env
 
+
 help:
 	echo "$$PROJECT_HELP_MSG" | less
 
@@ -24,8 +25,15 @@ test: setup test-notebook1 test-notebook2 test-notebook3 test-notebook4 test-not
 
 setup:
 	conda env create -f environment.yml
+ifndef TENANT_ID
+	@echo starting interactive login
+	az login -o table
+else
+	@echo using service principal login
 	az login -t ${TENANT_ID} --service-principal -u ${SP_USERNAME} --password ${SP_PASSWORD} 
-
+endif
+	
+	
 test-notebook1:
 	source activate batchscoringdl_aml
 	cd notebooks 
