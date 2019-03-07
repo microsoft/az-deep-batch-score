@@ -43,18 +43,18 @@ While it is not required, it is also useful to use the [Azure Storage Explorer](
 
 ## Steps
 Run throught the following notebooks:
-1. [Test the scripts](/01_local_testing.ipynb)
-2. [Setup AML](/02_setup_aml.ipynb).
-3. [Develop & publish AML pipeline](./03_develop_pipeline.ipynb)
-4. [Deploy Logic Apps](./04_deploy_logic_apps.ipynb)
-5. [Clean up](./05_clean_up.ipynb)
+1. [Test the scripts](notebooks/01_local_testing.ipynb)
+2. [Setup AML](notebooks/02_setup_aml.ipynb).
+3. [Develop & publish AML pipeline](notebooks/03_develop_pipeline.ipynb)
+4. [Deploy Logic Apps](notebooks/04_deploy_logic_apps.ipynb)
+5. [Clean up](notebooks/05_clean_up.ipynb)
 
 ## Clean up
 To clean up your working directory, you can run the `clean_up.sh` script that comes with this repo. This will remove all temporary directories that were generated as well as any configuration (such as Dockerfiles) that were created during the tutorials. This script will _not_ remove the `.env` file. 
 
 To clean up your Azure resources, you can simply delete the resource group that all your resources were deployed into. This can be done in the `az cli` using the command `az group delete --name <name-of-your-resource-group>`, or in the portal. If you want to keep certain resources, you can also use the `az cli` or the Azure portal to cherry pick the ones you want to deprovision. Finally, you should also delete the service principle using the `az ad sp delete` command. 
 
-All the step above are covered in the final [notebook](./05_clean_up.ipynb).
+All the step above are covered in the final [notebook](notebooks/05_clean_up.ipynb).
 
 # Contributing
 
