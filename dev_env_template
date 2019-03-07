@@ -1,4 +1,5 @@
 # Fill in the fields below and rename to .dev_env
+# TENANT_ID, SP_USERNAME and SP_PASSWORD are optional. If not supplied Azure cli will default to interactive login
 TENANT_ID=
 SP_USERNAME=
 SP_PASSWORD=
