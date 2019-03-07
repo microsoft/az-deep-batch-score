@@ -37,7 +37,12 @@ jobs:
       conda activate batchscoringdl_aml
       conda env list  
       echo Execute 02_setup_aml.ipynb
-      papermill 02_setup_aml.ipynb 02_setup_aml_output.ipynb --log-output --no-progress-bar -k python3 
+      papermill 02_setup_aml.ipynb 02_setup_aml_output.ipynb --log-output --no-progress-bar -k python3 \
+      -p subscription_id $(subscriptionid) \
+      -p resource_group $(azurergname) \
+      -p workspace_name $(workspacename) \
+      -p workspace_region $(azureregion) \
+      -p storage_account_name $(azurestorage)
     displayName: '02_setup_aml.ipynb'
 
   - bash: |
