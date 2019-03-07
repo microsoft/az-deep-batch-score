@@ -76,3 +76,18 @@ jobs:
       echo Execute 05_clean_up.ipynb
       papermill 05_clean_up.ipynb 05_clean_up_output.ipynb --log-output --no-progress-bar -k python3 
     displayName: '05_clean_up.ipynb'
+
+  - bash: |
+      source /usr/share/miniconda/etc/profile.d/conda.sh
+      conda activate batchscoringdl_aml
+      echo Execute Resource Group Delete
+      existResponse=$(az group exists -n $(azurergname))
+      if [ "$existResponse" == "true" ]; then
+        echo Deleting project resource group  
+        az group delete --name $(azurergname) --yes
+      else
+        echo Project resource group did not exist
+      fi
+      echo Done Cleanup
+    displayName: 'Backup Cleanup'
+    condition: or(canceled(),failed())
