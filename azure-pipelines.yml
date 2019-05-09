@@ -102,5 +102,5 @@ jobs:
     
       fieldMappings: |
         Description=Branch: Branch $(Build.SourceBranch) failed to build. Go to Boards>WorkItems and tag the failure type.
-  displayName: 'Create work item on failure'
-  condition: failed()    
+    displayName: 'Create work item on failure'
+    condition: failed()    
