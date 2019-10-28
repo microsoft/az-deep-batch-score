@@ -24,3 +24,4 @@ dependencies:
     - ipykernel==4.10.0
     - papermill==0.14.1
     - urllib3<1.25
+    - git+https://github.com/Microsoft/StatisticsTracker
