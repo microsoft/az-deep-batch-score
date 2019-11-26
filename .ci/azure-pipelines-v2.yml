@@ -31,8 +31,6 @@ jobs:
 - job: build_deploy_ai
   displayName: 'Build deploy AI'
 
-  timeoutInMinutes: 180
-
   pool:
     name: $(Agent)
 
