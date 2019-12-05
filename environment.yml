@@ -18,7 +18,7 @@ dependencies:
     - azure.mgmt.common
     - azure-mgmt-storage
     - black==18.9b0
-    - python-dotenv==0.9.1
+    - python-dotenv==0.10.3
     - torch==0.4.1
     - torchvision==0.2.1
     - ipykernel==4.10.0
