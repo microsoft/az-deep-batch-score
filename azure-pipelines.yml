@@ -13,8 +13,13 @@ jobs:
 - job: BatchScoringDeepLearningModelsWithAMLJob
   timeoutInMinutes: 300
   cancelTimeoutInMinutes: 2
+
   pool:
     vmImage: 'Ubuntu-16.04'
+
+  strategy:
+    maxParallel: 3
+    matrix: {"eastus": {"azureregion": "eastus", "azurergname" : "btscdlamleastus", "azurestorage" : "btscdlstgeast"},"southcentralus": {"azureregion": "southcentralus", "azurergname" : "btscdlamlsouthctrl" , "azurestorage" : "btscdlstgsthctrl"},"westus2": {"azureregion": "westus2", "azurergname" : "btscdlamlwestus" , "azurestorage" : "btscdlstgwest2"}}
 
   steps:
   - bash: |
