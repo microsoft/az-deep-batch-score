@@ -13,7 +13,7 @@ dependencies:
   - prompt_toolkit=1.0.15
   - pip:
     - azure
-    - azureml-sdk
+    - azureml-core
     - azure-cli
     - azure.mgmt.common
     - azure-mgmt-storage
